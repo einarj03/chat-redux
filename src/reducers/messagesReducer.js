@@ -8,8 +8,6 @@ export default function(state = null, action) {
       const stateCopy = state.slice(0);
       stateCopy.push(action.payload);
       return stateCopy;
-    case SELECT_CHANNEL:
-      return [];
     default:
       return state;
   }

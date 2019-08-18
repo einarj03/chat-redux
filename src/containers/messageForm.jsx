@@ -13,7 +13,6 @@ class MessageForm extends Component {
     };
   }
 
-
   componentDidMount() {
     this.messageInput.focus();
   }
@@ -29,8 +28,8 @@ class MessageForm extends Component {
   }
 
   handleSubmit = () => {
-    const { createMessage, currentUser, selectedChannel } = this.props;
-    this.props.createMessage(selectedChannel, currentUser, this.state.inputVal);
+    const { createMessage, currentUser, channel } = this.props;
+    this.props.createMessage(channel, currentUser, this.state.inputVal);
     this.setState({
       inputVal: ''
     });
@@ -56,7 +55,6 @@ class MessageForm extends Component {
 function MapStateToProps(state) {
   return {
     currentUser: state.currentUser,
-    selectedChannel: state.selectedChannel
   };
 }
 

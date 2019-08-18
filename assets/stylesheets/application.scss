@@ -45,14 +45,15 @@ body {
   -webkit-padding-start: 0px;
 }
 
-.channels-container > ul > li {
+.channels-container > ul > li > a {
   margin: 10px 0;
   font-size: 14px;
   color: #7c7c7c;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.channels-container > ul > li.active {
+.channels-container > ul > li.active > a {
   font-weight: 600;
   color: black
 }

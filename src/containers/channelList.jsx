@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { selectChannel, fetchMessages } from '../actions';
+import { fetchMessages } from '../actions';
 
 class ChannelList extends Component {
   shouldComponentUpdate(nextProps) {
-    return nextProps.selectedChannel !== this.props.selectedChannel;
+    return nextProps.channel !== this.props.channel;
   }
 
   componentDidUpdate() {
-    this.props.fetchMessages(this.props.selectedChannel);
-  }
-
-  handleClick = (channel) => {
-    if (channel !== this.props.selectedChannel) {
-      this.props.selectChannel(channel);
-    }
+    this.props.fetchMessages(this.props.channel);
   }
 
   render() {
@@ -27,12 +22,13 @@ class ChannelList extends Component {
           {this.props.channels.map((channel) => {
             return (
               <li
-                className={channel === this.props.selectedChannel ? "active" : null}
-                onClick={() => this.handleClick(channel)}
+                className={channel === this.props.channel ? "active" : null}
                 key={channel}
                 role="presentation"
               >
-                #{channel}
+                <Link to={`/${channel}`}>
+                  #{channel}
+                </Link>
               </li>
             );
           })}
@@ -45,13 +41,12 @@ class ChannelList extends Component {
 function MapStateToProps(state) {
   return {
     channels: state.channels,
-    selectedChannel: state.selectedChannel
   };
 }
 
 function MapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { selectChannel, fetchMessages },
+    { fetchMessages },
     dispatch
   );
 }
