@@ -8,7 +8,8 @@ module.exports = {
     publicPath: '/'
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    port: 8080
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -18,8 +18,8 @@ import messagesReducer from './reducers/messagesReducer';
 const initialState = {
   messages: [],
   channels: ['general', 'react', 'london'],
-  // currentUser: prompt("Please enter your username")
-  currentUser: 'batman'
+  currentUser: prompt("Please enter your username")
+  // currentUser: 'batman'
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
